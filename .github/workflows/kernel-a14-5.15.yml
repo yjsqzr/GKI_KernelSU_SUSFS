@@ -1,4 +1,7 @@
 name: Android 14 5.15
+permissions:
+  contents: write  # Allow writing to repository contents (for pushing tags)
+  actions: write   # Allows triggering actions
 
 on:
   workflow_call:  # This allows this workflow to be called from another workflow
@@ -22,6 +25,7 @@ on:
 jobs:
   build-kernel-a14-5-15-kernelsu-susfs:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - sub_level: "131"
